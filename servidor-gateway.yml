@@ -1,0 +1,33 @@
+server:
+    port: 7000
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+spring:
+    cloud:
+        gateway:
+            routes:
+                - id: serv_vuelos
+                    #lb:// cuando se va a acceder a través de eureka
+                  uri: lb://servicio-vuelos
+                  predicates: #Condicion que tiene que cumplir la url
+                      - Path=/svuelos/**
+                  filters: #Le añadimos esto para que no nos añada el predicado a la url
+                      - RewritePath=/svuelos/*, /
+
+                - id: serv_hoteles
+                    #lb:// cuando se va a acceder a través de eureka
+                  uri: lb://servicio-hoteles
+                  predicates: #Condicion que tiene que cumplir la url
+                      - Path=/shoteles/**
+                  filters: #Le añadimos esto para que no nos añada el predicado a la url
+                      - RewritePath=/shoteles/*, /
+
+                - id: serv_reservas
+                    #lb:// cuando se va a acceder a través de eureka
+                  uri: lb://servicio-reservas
+                  predicates: #Condicion que tiene que cumplir la url
+                      - Path=/sreservas/**
+                  filters: #Le añadimos esto para que no nos añada el predicado a la url
+                      - RewritePath=/sreservas/*, /
