@@ -1,0 +1,17 @@
+server:
+    port: 7000
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+zuul:
+    routes:
+        zuul-alias-vuelos: #Identificador de enrutado
+            path: /svuelos/** #Path que será interceptado
+            serviceId: servicio-vuelos
+        zuul-alias-hoteles: #Identificador de enrutado, podemos poner lo que quieramos
+            path: /shoteles/** #Path que será interceptado
+            serviceId: servicio-hoteles
+        zuul-alias-reservas: #Identificador de enrutado, podemos poner lo que quieramos
+            path: /sreservas/** #Path que será interceptado
+            serviceId: servicio-reservas
