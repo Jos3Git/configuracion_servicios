@@ -1,0 +1,24 @@
+server:
+    port: 8000
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: root
+        url: jdbc:mysql://localhost:3306/13_viajes
+        username: root
+    jpa:
+        hibernate:
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+        show-sql: true
+    sql:
+        init:
+            mode: always
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
