@@ -1,0 +1,7 @@
+server:
+    port: 8761
+eureka:
+    client:
+        registerWithEureka: false #true para que se registre a sí mismo en el eureka. Si no se introduce esta propiedad, estará a true por defecto.
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
